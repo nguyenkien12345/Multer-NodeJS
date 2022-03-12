@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Express Multer Upload Single File lên Server</title>
+</head>
+
+<body>
+
+    <!-- enctype='multipart/form-data' giúp cho server biết là chúng ta đang upload file -->
+    <!-- Trên server sẽ dựa vào cái name mà ta để trong thẻ input có type là file để lấy cái file mà chúng ta upload lên -->
+
+   <div style='padding: 15px;'>
+    <!-- Upload Single File -->
+    <form action='http://localhost:3000/v1/multer/upload-single-file' method='POST' enctype='multipart/form-data' >
+        <div>
+            <label for=''>Upload Single File</label>
+            <input type='file' name='profile_picture'/>
+        </div>
+        <div>
+            <button class='btn btn-save' type='submit'>Save File</button>
+        </div>
+    </form>
+
+    <!-- Upload Multiple File -->
+    <form action='http://localhost:3000/v1/multer/upload-multiple-file' method='POST' enctype='multipart/form-data'>
+        <div>
+            <label for=''>Upload Multiple File</label>
+            <input type='file' name='multiple_pictures' multiple/>
+        </div>
+        <div>
+            <button class='btn btn-save' type='submit'>Save File</button>
+        </div>
+    </form>
+   </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Thư viện app-root-path sẽ giải quyết vấn đề khi require đường dẫn mà ở đây chính là vấn đề: ("../../path").
