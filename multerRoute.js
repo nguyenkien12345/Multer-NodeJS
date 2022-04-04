@@ -7,13 +7,12 @@ const router = require('express').Router();
 
 // Định nghĩa nơi lưu trữ, cách lấy file
 const storage = multer.diskStorage({
-    // đích đến, nơi lưu file
+    // Đích đến, nơi lưu file
     destination: (req, file, cb) => {
         // Nếu không có file trả về null, ngược lại có file thì file này sẽ được lưu vào thư mục images
-        console.log('>>> Check approot: ', appRoot);
         cb(null, appRoot + '/public/images/');
     },
-    // tên của file 
+    // Tên của file 
     filename: (req, file, cb) => {
         // Nếu không có file trả về null, ngược lại có file thì trả về tên file (Lưu ý tên file ảnh phải là unique do đó ta nên cộng chuỗi để đảm bảo tính unique)
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
@@ -32,4 +31,7 @@ router.post('/upload-single-file', upload.single('profile_picture'), multerContr
 // array: Can upload multiple file images
 // 3 ở đây là tối đa 3 file ảnh
 router.post('/upload-multiple-file', upload.array('multiple_pictures', 3), multerController.handleUploadMultipleFile);
+
+router.get('/', multerController.homepage);
+
 module.exports = router;
